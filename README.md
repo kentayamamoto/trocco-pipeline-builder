@@ -2,7 +2,7 @@
 
 > 自然言語から TROCCO データパイプラインを構築する Claude Code スキル
 
-`kintone to Snowflake` のようなコマンドを解析し、Terraform HCL を自動生成して TROCCO のデータ転送パイプラインをデプロイします。**プログラミング不要** — Markdown プロンプトと宣言的な HCL だけで完結します。
+`kintoneのデータをBigQueryに連携して` のような自然言語コマンドから、Terraform HCL を自動生成して TROCCO のデータ転送パイプラインをデプロイします。**プログラミング不要** — Markdown プロンプトと宣言的な HCL だけで完結します。
 
 > **Note:** 2025/02/10 現在、動作確認済みの組み合わせは **kintone → BigQuery** のみです。その他のコネクタは実験的サポートです。
 
@@ -13,7 +13,7 @@
 ## 仕組み
 
 ```
-/setup-pipeline kintone to Snowflake
+/setup-pipeline kintoneのデータをBigQueryに連携して
 ```
 
 1. 自然言語入力を解析（ソース → デスティネーション）
@@ -47,16 +47,15 @@ cp .env.example .env.local
 
 ```bash
 # パイプラインを構築:
-/setup-pipeline kintone to Snowflake
+/setup-pipeline kintoneのデータをBigQueryに連携して
 
 # ドライランモード（plan のみ、apply なし）:
-/setup-pipeline kintone to Snowflake --dry-run
-
-# 日本語の自然言語にも対応:
-/setup-pipeline kintoneの顧客管理アプリをSnowflakeに毎日転送して
+/setup-pipeline kintone to BigQuery --dry-run
 ```
 
 ## 対応コネクタ
+
+> **Note:** 以下は [TROCCO Terraform Provider](https://registry.terraform.io/providers/trocco-io/trocco/latest) がサポートするコネクタの一覧です。本プロジェクトで動作確認済みの組み合わせは **kintone → BigQuery** のみです。その他のコネクタはリファレンスドキュメントを追加することで対応可能ですが、現時点では未検証です。
 
 ### ソース（入力元）
 
@@ -64,9 +63,7 @@ kintone, MySQL, PostgreSQL, BigQuery, Salesforce, Google Spreadsheets, S3, GCS, 
 
 ### デスティネーション（出力先）
 
-BigQuery, Snowflake\*, MySQL, PostgreSQL, Salesforce, Google Spreadsheets, kintone, Databricks, SFTP
-
-\*Snowflake: Terraform Provider 経由（REST API フォールバック付き）
+BigQuery, Snowflake, MySQL, PostgreSQL, Salesforce, Google Spreadsheets, kintone, Databricks, SFTP
 
 詳細は [reference/connector-catalog.md](reference/connector-catalog.md) を参照してください。
 
@@ -77,10 +74,10 @@ BigQuery, Snowflake\*, MySQL, PostgreSQL, Salesforce, Google Spreadsheets, kinto
 1. **kintone 開発者ライセンス**（無料・1年間）: [登録はこちら](https://kintone.dev/en/developer-license-registration-form/)
    - テンプレートから「顧客管理」アプリを作成
    - 読み取り権限付きの API トークンを発行
-2. **Snowflake フリートライアル**（30日間・$400 クレジット）: [登録はこちら](https://signup.snowflake.com/)
-   - `DEMO_DB.PUBLIC` スキーマを作成
+2. **Google Cloud**: [BigQuery サンドボックス](https://cloud.google.com/bigquery/docs/sandbox)（無料・クレジットカード不要）
+   - プロジェクトを作成し、BigQuery データセットを作成
 3. `.env.local` に認証情報を設定
-4. 実行: `/setup-pipeline kintone to Snowflake`
+4. 実行: `/setup-pipeline kintoneのデータをBigQueryに連携して`
 
 ## プロジェクト構成
 
