@@ -1,7 +1,6 @@
 ---
 name: destination-snowflake
 description: SnowflakeデスティネーションのHCL情報提供・接続確認・REST APIフォールバックを実行する
-allowed-tools: Bash, Read, Write, Glob, Grep
 ---
 
 # Snowflake デスティネーションSkill

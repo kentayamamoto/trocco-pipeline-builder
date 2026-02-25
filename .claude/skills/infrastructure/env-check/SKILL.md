@@ -1,7 +1,6 @@
 ---
 name: env-check
 description: Terraform/jq/環境変数の存在チェックを実行する
-allowed-tools: Bash, Read, Glob
 ---
 
 # 環境チェック共通手順
@@ -36,8 +35,7 @@ fi
 ```
 
 - `.env.local` が存在しない → テンプレート生成を案内:
-  `python3 .claude/skills/infrastructure/generate-env/generate_env_template.py --source {src} --destination {dest}`
-  生成後、値を設定して再実行するよう案内して停止
+  `/generate-env {src} to {dest}` でテンプレートを生成できることを案内して停止
 
 ## 3. TROCCO_API_KEY チェック (必須)
 
@@ -58,8 +56,7 @@ echo "TROCCO_API_KEY: ${TROCCO_API_KEY:+configured}"
 - **デスティネーション固有変数:** デスティネーションSkill (`.claude/skills/destinations/{dest}/SKILL.md`) の「必要環境変数」セクション参照
 
 各変数の設定状況を表示し、不足がある場合は以下を案内して停止する:
-`python3 .claude/skills/infrastructure/generate-env/generate_env_template.py --source {src} --destination {dest}`
-で必要な変数を確認し、`.env.local` に設定してから再実行。
+`/generate-env {src} to {dest}` で必要な変数テンプレートを生成し、`.env.local` に値を設定してから再実行。
 
 ### チェック時の注意
 

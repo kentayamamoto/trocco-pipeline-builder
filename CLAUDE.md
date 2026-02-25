@@ -26,7 +26,7 @@ Markdown プロンプト + Terraform HCL のみで完結（プログラミング
       terraform-execute/SKILL.md         #   Terraform plan/apply
       test-and-report/SKILL.md           #   テスト実行・結果レポート
       generate-env/                      #   .env.local テンプレート生成
-        SKILL.md / generate_env_template.py / env-vars.json
+        SKILL.md / env-vars.json
 reference/
   connector-catalog.md                    # 対応コネクタ一覧・TROCCO API 情報
   type-mapping.md                         # フィールド型変換表

@@ -1,7 +1,6 @@
 ---
 name: source-kintone
 description: kintoneソースのスキーマ取得・型変換・接続確認を実行する
-allowed-tools: Bash, Read, Write, Glob, Grep
 ---
 
 # kintone ソースSkill

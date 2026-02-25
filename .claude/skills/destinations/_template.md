@@ -1,7 +1,6 @@
 ---
 name: destination-{connector_name}
 description: {ConnectorName}デスティネーションの接続確認・HCL情報を提供する
-allowed-tools: Bash, Read, Write, Glob, Grep
 ---
 
 # {ConnectorName} デスティネーションSkill
@@ -140,5 +139,4 @@ fi
    - `{prefix}` → Terraform変数プレフィックス（例: `mysql`, `pg`）
 3. `reference/connector-catalog.md` にエントリ追加
 4. `reference/terraform-patterns.md` にHCLテンプレート追加
-5. `.claude/skills/infrastructure/generate-env/env-vars.json` の `destinations` セクションに変数定義追加
-6. （任意）`reference/destinations/{connector_name}.md` に詳細リファレンス作成
+5. （任意）`reference/destinations/{connector_name}.md` に詳細リファレンス作成

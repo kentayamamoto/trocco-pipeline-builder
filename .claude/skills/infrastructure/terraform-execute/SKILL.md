@@ -1,7 +1,6 @@
 ---
 name: terraform-execute
 description: Terraform plan/applyの実行・エラーハンドリング・ユーザー承認を管理する
-allowed-tools: Bash, Read, Write, Glob
 ---
 
 # Terraform Plan/Apply 共通手順

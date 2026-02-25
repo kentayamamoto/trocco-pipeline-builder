@@ -1,7 +1,6 @@
 ---
 name: test-and-report
 description: TROCCOジョブのテスト実行・ステータスポーリング・結果レポートを行う
-allowed-tools: Bash, Read
 ---
 
 # テスト実行・結果レポート共通手順

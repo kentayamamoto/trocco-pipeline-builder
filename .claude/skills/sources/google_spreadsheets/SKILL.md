@@ -1,7 +1,6 @@
 ---
 name: source-google-spreadsheets
 description: Google Spreadsheetsソースのスキーマ取得・型変換・接続確認を実行する
-allowed-tools: Bash, Read, Write, Glob, Grep
 ---
 
 # Google Spreadsheets ソースSkill

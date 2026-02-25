@@ -1,7 +1,6 @@
 ---
 name: destination-bigquery
 description: BigQueryデスティネーションの接続確認・HCL情報を提供する
-allowed-tools: Bash, Read, Write, Glob, Grep
 ---
 
 # BigQuery デスティネーションSkill

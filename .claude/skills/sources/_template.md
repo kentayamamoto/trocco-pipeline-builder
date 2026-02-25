@@ -1,7 +1,6 @@
 ---
 name: source-{connector_name}
 description: {ConnectorName}ソースのスキーマ取得・型変換・接続確認を実行する
-allowed-tools: Bash, Read, Write, Glob, Grep
 ---
 
 # {ConnectorName} ソースSkill
@@ -151,6 +150,5 @@ variable "{prefix}_connection_name" {
    - `{PREFIX}` → 環境変数プレフィックス（例: `MYSQL`, `PG`）
    - `{prefix}` → Terraform変数プレフィックス（例: `mysql`, `pg`）
 3. `reference/connector-catalog.md` にエントリ追加
-4. `.claude/skills/infrastructure/generate-env/env-vars.json` の `sources` セクションに変数定義追加
-5. （任意）`reference/sources/{connector_name}.md` に詳細リファレンス作成
-6. （任意）`reference/type-mapping.md` に型変換ルール追加
+4. （任意）`reference/sources/{connector_name}.md` に詳細リファレンス作成
+5. （任意）`reference/type-mapping.md` に型変換ルール追加

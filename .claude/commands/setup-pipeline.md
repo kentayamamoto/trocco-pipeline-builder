@@ -48,7 +48,7 @@ allowed-tools: Bash, Read, Write, Glob, Grep
 ```
 
 - `.env.local` が存在しない場合:
-  1. `python3 .claude/skills/infrastructure/generate-env/generate_env_template.py --source {src} --destination {dest}` を実行
+  1. `.claude/skills/infrastructure/generate-env/SKILL.md` を Read で読み込み、手順に従ってテンプレートを生成
   2. ユーザーに各変数の設定を案内して **停止**
   3. 設定完了後に再度 `/setup-pipeline` を実行するよう案内
 - `.env.local` が存在する場合: Step 0 へ進む

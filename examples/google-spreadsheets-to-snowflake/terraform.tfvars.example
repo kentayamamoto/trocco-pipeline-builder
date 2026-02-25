@@ -19,7 +19,7 @@
 # Google Spreadsheets接続: モードA（既存接続参照）の場合は connection_id を設定
 # gs_connection_id = 123
 gs_connection_name = "gs-demo"
-gs_spreadsheet_id  = "1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgVE2upms"
+gs_spreadsheet_id  = "your_spreadsheet_id"
 gs_worksheet_title = "Sheet1"
 gs_start_row       = 2
 gs_start_column    = "A"
