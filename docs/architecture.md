@@ -106,7 +106,7 @@ User input: "/setup-pipeline kintone to Snowflake"
 │ Pre-Step: .env.local Template           │
 │ - Check if .env.local exists            │
 │ - If missing: generate template via     │
-│   generate_env_template.py, then stop   │
+│   generate-env Skill, then stop         │
 │ - If exists: proceed to Step 0          │
 └─────────────┬───────────────────────────┘
               │
@@ -163,13 +163,12 @@ User input: "/setup-pipeline kintone to Snowflake"
 └─────────────────────────────────────────┘
 ```
 
-## Utility Scripts
+## 環境変数テンプレート生成
 
-| Script | Purpose |
-|--------|---------|
-| `.claude/skills/infrastructure/generate-env/generate_env_template.py` | `.env.local` テンプレート生成。同ディレクトリの `env-vars.json` を読み取り、指定されたソース/デスティネーションに必要な変数のみを含むテンプレートを出力。Python 3 標準ライブラリのみ使用。 |
+`.claude/skills/infrastructure/generate-env/SKILL.md` が `.env.local` テンプレート生成を担当する。
+同ディレクトリの `env-vars.json` を Read で読み取り、指定されたソース/デスティネーションに必要な変数のみを含むテンプレートを Write ツールで出力する（外部スクリプト不要）。
 
-`.claude/skills/infrastructure/generate-env/env-vars.json` は全コネクタの環境変数定義を構造化データとして持つ。スクリプトのデータソースであると同時に、新規コネクタ追加時の変数登録先でもある。
+`env-vars.json` は全コネクタの環境変数定義を構造化データとして持つ。Skill のデータソースであると同時に、新規コネクタ追加時の変数登録先でもある。
 
 ## Key Technical Decisions
 
