@@ -10,7 +10,7 @@
 | BigQuery | bigquery | BQ_PROJECT, BQ_DATASET, BQ_TABLE | TROCCO側で自動取得 |
 | Salesforce | salesforce | SF_CONNECTION_ID（TROCCO上でOAuth済み） | TROCCO側で自動取得 |
 | Google Spreadsheets | google_spreadsheets | GS_CONNECTION_ID or GS_SERVICE_ACCOUNT_JSON_KEY, GS_SPREADSHEET_ID | シート構造から推定 |
-| Amazon S3 | s3 | S3_CONNECTION_ID, S3_BUCKET, S3_PATH | ヘッダ行から推定 |
+| Amazon S3 | s3 | S3_CONNECTION_ID or (S3_AWS_AUTH_TYPE + IAM User/AssumeRole認証情報), S3_BUCKET, S3_PATH_PREFIX, S3_FILE_FORMAT | ファイル形式に応じて推定（CSV: ヘッダ行、JSONL: キー名、Parquet: スキーマ内包） |
 | Google Cloud Storage | gcs | GCS_CONNECTION_ID, GCS_BUCKET, GCS_PATH | ヘッダ行から推定 |
 | Snowflake | snowflake | SNOWFLAKE_HOST, SNOWFLAKE_USER, SNOWFLAKE_PASSWORD, SNOWFLAKE_WAREHOUSE, SNOWFLAKE_DATABASE, SNOWFLAKE_SCHEMA | TROCCO側で自動取得 |
 | Google Analytics 4 | google_analytics4 | GA4_CONNECTION_ID | 定型レポートフィールド |
@@ -25,7 +25,7 @@
 | コネクタ名 | Terraform output_option_type | Exampleあり | 備考 |
 |-----------|----------------------------|-------------|------|
 | BigQuery | bigquery | Yes | 最も実績あり。推奨デスティネーション |
-| Snowflake | snowflake | **No** | スキーマ上存在するがexampleなし。問題発生時はREST APIフォールバック |
+| Snowflake | snowflake | Yes | s3-to-snowflake, google-spreadsheets-to-snowflake, kintone-to-snowflake。問題発生時はREST APIフォールバック |
 | MySQL | mysql | Yes | |
 | PostgreSQL | postgresql | Yes | |
 | Salesforce | salesforce | Yes | |
