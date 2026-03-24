@@ -205,9 +205,19 @@ variable "snowflake_load_mode" {
 
 ```bash
 # Destination: Snowflake
+# 共通変数（output_option 用 — 両モード必須）
+export TF_VAR_snowflake_warehouse="$SNOWFLAKE_WAREHOUSE"
+export TF_VAR_snowflake_database="$SNOWFLAKE_DATABASE"
+[ -n "$SNOWFLAKE_SCHEMA" ] && export TF_VAR_snowflake_schema="$SNOWFLAKE_SCHEMA"
+[ -n "$SNOWFLAKE_TABLE" ] && export TF_VAR_snowflake_table="$SNOWFLAKE_TABLE"
+export TF_VAR_snowflake_role="$SNOWFLAKE_ROLE"
+
+# 接続情報（モードに応じて分岐）
 if [ -n "$SNOWFLAKE_CONNECTION_ID" ]; then
   export TF_VAR_snowflake_connection_id="$SNOWFLAKE_CONNECTION_ID"
-elif [ -z "$SNOWFLAKE_CONNECTION_ID" ]; then
+else
+  export TF_VAR_snowflake_host="$SNOWFLAKE_HOST"
+  export TF_VAR_snowflake_user="$SNOWFLAKE_USER"
   export TF_VAR_snowflake_auth_method="${SNOWFLAKE_AUTH_METHOD:-user_password}"
   [ "$SNOWFLAKE_AUTH_METHOD" = "key_pair" ] && export TF_VAR_snowflake_private_key="$(printf '%b' "$SNOWFLAKE_PRIVATE_KEY")"
   [ "$SNOWFLAKE_AUTH_METHOD" != "key_pair" ] && export TF_VAR_snowflake_password="$SNOWFLAKE_PASSWORD"
@@ -228,8 +238,7 @@ fi
 
 terraform plan で `snowflake_output_option` にエラーが出た場合、TROCCO REST API で直接ジョブ定義を作成する。
 
-詳細は `reference/destinations/snowflake.md` の「REST API Fallback」セクション、
-および `reference/connector-catalog.md` の「Snowflake デスティネーションのフォールバック手順」を参照。
+詳細は `reference/destinations/snowflake/README.md` の「REST API Fallback」セクションを参照。
 
 ```bash
 source .env.local
